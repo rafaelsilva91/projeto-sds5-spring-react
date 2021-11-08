@@ -31,3 +31,8 @@ body {
 .text-primary {
     color: var(--color-primary) !important;
 }
+
+.align-center {
+    margin-left: 40%;
+    margin-right: 40%;
+}

@@ -2,7 +2,7 @@ import axios from "axios";
 import Pagination from "components/Pagination";
 import { useEffect, useState } from "react";
 import { SalePage } from "types/sale";
-// import { formatLocalDate } from "utils/format";
+import { formatLocalDate } from "utils/format";
 import { BASE_URL } from "utils/requests";
 
 
@@ -31,7 +31,9 @@ const DataTable = () => {
 
     return (
         <>
-            <Pagination page={page} onPageChange={changePage} />
+            <div className="align-center">
+                <Pagination page={page} onPageChange={changePage} />
+            </div>
             <div className="table-responsive">
                 <table className="table table-striped table-sm">
                     <thead>
@@ -46,7 +48,7 @@ const DataTable = () => {
                     <tbody>
                         {page.content?.map(item => (
                             <tr key={item.id}>
-                                <td>{item.date}</td>
+                                <td>{formatLocalDate(item.date, "dd/MM/yyyy")}</td>
                                 <td>{item.seller.name}n</td>
                                 <td>{item.visited}</td>
                                 <td>{item.deals}</td>
@@ -61,7 +63,3 @@ const DataTable = () => {
 }
 
 export default DataTable;
-function formatLocalDate(date: string, arg1: string): import("react").ReactNode {
-    throw new Error("Function not implemented.");
-}
-
